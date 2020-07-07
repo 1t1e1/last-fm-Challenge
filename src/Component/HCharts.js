@@ -3,35 +3,38 @@ import axios from "axios";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-const apikey = "97cee60fe2193b383cd8377301901a80";
-
-export default function HCharts() {
+export default function HCharts({ url, editFunc, keyArr, title }) {
 	const [options, setOption] = useState();
 
 	useEffect(() => {
 		axios
-			.get(
-				`http://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=spain&api_key=${apikey}&format=json&limit=10`
-			)
+			.get(url)
 			.then(function (response) {
-				const data = response.data.tracks.track;
-				const my_data = data.map((el) => {
-					return {
-						name: el.name,
-						y: Number(el.listeners),
-					};
-				});
+				const responseData = response.data[keyArr[0]][keyArr[1]];
+				const editedData = responseData.map(editFunc);
 
 				setOption({
-					chart: {
-						type: "column",
-					},
 					title: {
-						text: "My chart",
+						text: title,
+					},
+					xAxis: {
+						labels: {
+							formatter: function () {
+								return editedData[this.value].name;
+							},
+						},
+					},
+					yAxis: {
+						title: {
+							text: "Count",
+						},
 					},
 					series: [
 						{
-							data: my_data,
+							type: "column",
+							colorByPoint: true,
+							data: editedData,
+							showInLegend: false,
 						},
 					],
 				});
@@ -39,15 +42,10 @@ export default function HCharts() {
 			.catch(function (error) {
 				console.log(error);
 			});
-
-		return () => {
-			// will
-		};
 	}, []);
 
 	return (
 		<div>
-			<p> Hello</p>
 			<HighchartsReact highcharts={Highcharts} options={options} />
 		</div>
 	);
