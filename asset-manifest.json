@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/last-fm-Challenge/static/css/main.5f361e03.chunk.css",
+    "main.js": "/last-fm-Challenge/static/js/main.f5340847.chunk.js",
+    "main.js.map": "/last-fm-Challenge/static/js/main.f5340847.chunk.js.map",
+    "runtime-main.js": "/last-fm-Challenge/static/js/runtime-main.32c07ed6.js",
+    "runtime-main.js.map": "/last-fm-Challenge/static/js/runtime-main.32c07ed6.js.map",
+    "static/js/2.d3e339e8.chunk.js": "/last-fm-Challenge/static/js/2.d3e339e8.chunk.js",
+    "static/js/2.d3e339e8.chunk.js.map": "/last-fm-Challenge/static/js/2.d3e339e8.chunk.js.map",
+    "index.html": "/last-fm-Challenge/index.html",
+    "precache-manifest.fe95274f8c19d9ccaee3152e7304d547.js": "/last-fm-Challenge/precache-manifest.fe95274f8c19d9ccaee3152e7304d547.js",
+    "service-worker.js": "/last-fm-Challenge/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/last-fm-Challenge/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.d3e339e8.chunk.js.LICENSE.txt": "/last-fm-Challenge/static/js/2.d3e339e8.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.32c07ed6.js",
+    "static/js/2.d3e339e8.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.f5340847.chunk.js"
+  ]
+}
