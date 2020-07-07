@@ -5,22 +5,8 @@ import HighchartsReact from "highcharts-react-official";
 
 const apikey = "97cee60fe2193b383cd8377301901a80";
 
-const options = {
-	chart: {
-		type: "spline",
-	},
-	title: {
-		text: "My chart",
-	},
-	series: [
-		{
-			data: [1, 2, 1, 4, 3, 6],
-		},
-	],
-};
-
 export default function HCharts() {
-	const [state, setstate] = useState();
+	const [options, setOption] = useState();
 
 	useEffect(() => {
 		axios
@@ -28,7 +14,27 @@ export default function HCharts() {
 				`http://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=spain&api_key=${apikey}&format=json&limit=10`
 			)
 			.then(function (response) {
-				console.log(response.data);
+				const data = response.data.tracks.track;
+				const my_data = data.map((el) => {
+					return {
+						name: el.name,
+						y: Number(el.listeners),
+					};
+				});
+
+				setOption({
+					chart: {
+						type: "column",
+					},
+					title: {
+						text: "My chart",
+					},
+					series: [
+						{
+							data: my_data,
+						},
+					],
+				});
 			})
 			.catch(function (error) {
 				console.log(error);
@@ -38,6 +44,7 @@ export default function HCharts() {
 			// will
 		};
 	}, []);
+
 	return (
 		<div>
 			<p> Hello</p>
